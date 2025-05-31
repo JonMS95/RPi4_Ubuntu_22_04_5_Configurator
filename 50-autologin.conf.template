@@ -1,0 +1,4 @@
+[Seat:*]
+autologin-user=TEMPLATE_USER
+autologin-user-timeout=0
+autologin-session=ubuntu
