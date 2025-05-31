@@ -1,7 +1,15 @@
 #!/bin/bash
 
 # Variables
-USER_NAME="jon"
+USER_NAME=""
+
+# If the script was run with sudo, use $SUDO_USER. Otherwise, use the current user's name
+if [ -n "$SUDO_USER" ]; then
+    USER_NAME=$SUDO_USER
+else
+    USER_NAME=$USER
+fi
+
 HOME_DIR="/home/$USER_NAME"
 SCRIPT_DIR="$(dirname "$(realpath "$0")")"
 
