@@ -1,0 +1,14 @@
+[Unit]
+Description=Start x11vnc at startup
+After=graphical.target
+Requires=graphical.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/x11vnc -auth guess -forever -loop -noxdamage -repeat -rfbauth /home/TEMPLATE_USER/.vnc/passwd -rfbport 5900 -shared -display :0
+User=TEMPLATE_USER
+Environment=DISPLAY=:0
+Restart=always
+
+[Install]
+WantedBy=graphical.target
