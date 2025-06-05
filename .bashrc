@@ -121,7 +121,8 @@ bind '"\e[5~": history-search-backward'  # Page Up
 bind '"\e[6~": history-search-forward'   # Page Down
 
 # Custom aliases
-alias cds='cd ~/Desktop/scripts'
+alias cdd='if [ ! -d ~/Desktop ]; then mkdir -p ~/Desktop; fi; cd ~/Desktop'
+alias cds='if [ ! -d ~/Desktop/scripts ]; then mkdir -p ~/Desktop/scripts; fi; cd ~/Desktop/scripts'
 alias apagar='sudo shutdown -h now'
 alias reiniciar='sudo shutdown -r now'
-alias tmm='if [[ $(tmux list-sessions 2>/dev/null | wc -l) == 0 ]]; then tmux; else tmux attach-session -t main; fi'
+alias tmm='if [[ $(tmux list-sessions 2>/dev/null | wc -l) == 0 ]]; then tmux new -s main; else tmux attach-session -t main; fi'
