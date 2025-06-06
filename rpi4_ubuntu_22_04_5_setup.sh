@@ -13,8 +13,10 @@ fi
 HOME_DIR="/home/$USER_NAME"
 SCRIPT_DIR="$(dirname "$(realpath "$0")")"
 
-# 1) Add user to sudoers group
+# 1) Add user to sudoers group and prevent it from being prompted for its password
 sudo usermod -aG sudo $USER_NAME
+sudo cp $SCRIPT_DIR/custom_sudoers_file /etc/sudoers.d/custom_sudoers
+sudo chmod 440 /etc/sudoers.d/custom_sudoers
 
 # 2) Update & install packages
 sudo apt update
