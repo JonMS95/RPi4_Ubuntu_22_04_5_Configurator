@@ -87,4 +87,13 @@ else
   echo "Warning: .bashrc file not found in script directory. Skipping."
 fi
 
+# 9) Overwrite .vimrc with your provided file
+if [ -f "$SCRIPT_DIR/.vimrc" ]; then
+  sudo cp "$SCRIPT_DIR/.vimrc" $HOME_DIR/.vimrc
+  sudo chown $USER_NAME:$USER_NAME $HOME_DIR/.vimrc
+  echo ".vimrc copied from script directory"
+else
+  echo "Warning: .vimrc file not found in script directory. Skipping."
+fi
+
 echo "Setup complete! Please reboot to apply all changes."
