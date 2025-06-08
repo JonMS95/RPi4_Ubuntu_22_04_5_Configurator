@@ -21,7 +21,7 @@ sudo chmod 440 /etc/sudoers.d/custom_sudoers
 # 2) Update & install packages
 sudo apt update
 sudo apt upgrade -y
-sudo apt install -y ssh avahi-daemon x11vnc lightdm xfce4 xfce4-goodies xfce4-power-manager xfce4-screensaver tmux git vim net-tools
+sudo apt install -y ssh avahi-daemon x11vnc lightdm xfce4 xfce4-goodies xfce4-power-manager xfce4-screensaver tmux git build-essential xmlstarlet vim net-tools
 
 # Enable and start ssh & avahi services
 sudo systemctl enable ssh
