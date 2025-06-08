@@ -120,6 +120,9 @@ fi
 bind '"\e[5~": history-search-backward'  # Page Up
 bind '"\e[6~": history-search-forward'   # Page Down
 
+# Enable core dumps
+ulimit -c unlimited
+
 # Custom aliases
 alias cdd='if [ ! -d ~/Desktop ]; then mkdir -p ~/Desktop; fi; cd ~/Desktop'
 alias cds='if [ ! -d ~/Desktop/scripts ]; then mkdir -p ~/Desktop/scripts; fi; cd ~/Desktop/scripts'
