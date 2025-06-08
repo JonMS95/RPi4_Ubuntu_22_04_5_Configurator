@@ -78,7 +78,10 @@ if [ ! -d "$HOME_DIR/.tmux/plugins/tpm" ]; then
   sudo su - $USER_NAME -c "git clone https://github.com/tmux-plugins/tpm $HOME_DIR/.tmux/plugins/tpm"
 fi
 
-# 8) Overwrite .bashrc with your provided file
+# 8) Install core dump manager (coredumpctl)
+sudo apt install systemd-coredump -y
+
+# 9) Overwrite .bashrc with your provided file
 if [ -f "$SCRIPT_DIR/.bashrc" ]; then
   sudo cp "$SCRIPT_DIR/.bashrc" $HOME_DIR/.bashrc
   sudo chown $USER_NAME:$USER_NAME $HOME_DIR/.bashrc
@@ -87,7 +90,7 @@ else
   echo "Warning: .bashrc file not found in script directory. Skipping."
 fi
 
-# 9) Overwrite .vimrc with your provided file
+# 10) Overwrite .vimrc with your provided file
 if [ -f "$SCRIPT_DIR/.vimrc" ]; then
   sudo cp "$SCRIPT_DIR/.vimrc" $HOME_DIR/.vimrc
   sudo chown $USER_NAME:$USER_NAME $HOME_DIR/.vimrc
