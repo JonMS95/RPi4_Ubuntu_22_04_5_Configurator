@@ -21,7 +21,7 @@ sudo chmod 440 /etc/sudoers.d/custom_sudoers
 # 2) Update & install packages
 sudo apt update
 sudo apt upgrade -y
-sudo apt install -y ssh avahi-daemon x11vnc lightdm xfce4 xfce4-goodies xfce4-power-manager xfce4-screensaver tmux git build-essential xmlstarlet vim net-tools
+sudo apt install -y ssh avahi-daemon x11vnc lightdm xfce4 xfce4-goodies xfce4-power-manager xfce4-screensaver tmux git build-essential xmlstarlet vim net-tools tree
 
 # Enable and start ssh & avahi services
 sudo systemctl enable ssh
@@ -78,10 +78,16 @@ if [ ! -d "$HOME_DIR/.tmux/plugins/tpm" ]; then
   sudo su - $USER_NAME -c "git clone https://github.com/tmux-plugins/tpm $HOME_DIR/.tmux/plugins/tpm"
 fi
 
-# 8) Install core dump manager (coredumpctl)
+# 8) Make sure ~/.tmux/resurrect/ directory exists so as to recover saved sessions (if any)
+if [ ! -d ~/.tmux/resurrect ]
+then
+    mkdir -p ~/.tmux/resurrect/
+fi
+
+# 9) Install core dump manager (coredumpctl)
 sudo apt install systemd-coredump -y
 
-# 9) Overwrite .bashrc with your provided file
+# 10) Overwrite .bashrc with your provided file
 if [ -f "$SCRIPT_DIR/.bashrc" ]; then
   sudo cp "$SCRIPT_DIR/.bashrc" $HOME_DIR/.bashrc
   sudo chown $USER_NAME:$USER_NAME $HOME_DIR/.bashrc
@@ -90,7 +96,7 @@ else
   echo "Warning: .bashrc file not found in script directory. Skipping."
 fi
 
-# 10) Overwrite .vimrc with your provided file
+# 11) Overwrite .vimrc with your provided file
 if [ -f "$SCRIPT_DIR/.vimrc" ]; then
   sudo cp "$SCRIPT_DIR/.vimrc" $HOME_DIR/.vimrc
   sudo chown $USER_NAME:$USER_NAME $HOME_DIR/.vimrc
