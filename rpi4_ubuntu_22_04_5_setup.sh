@@ -105,4 +105,7 @@ else
   echo "Warning: .vimrc file not found in script directory. Skipping."
 fi
 
+# 12) Set new hostname
+sudo hostnamectl set-hostname rpi4ubuntu
+
 echo "Setup complete! Please reboot to apply all changes."
